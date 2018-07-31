@@ -53,6 +53,7 @@ function newSpell() {
     closeScroll();
 }
 
-openScroll();
-
-document.body.addEventListener('click', newSpell);
+window.addEventListener('load', function() {
+    openScroll();
+    document.body.addEventListener('click', newSpell);
+});
