@@ -1,0 +1,165 @@
+/* Scroll styling based on https://codepen.io/jmeester/pen/rmGaGZ/ */
+@import url('https://fonts.googleapis.com/css?family=Bilbo+Swash+Caps');
+
+html {
+    background-color: #000;
+    overflow: hidden;
+}
+
+.c-body {
+    font-family: 'Bilbo Swash Caps', cursive;
+    font-size: 42px;
+    line-height: 1;
+}
+
+.c-main {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    opacity: 0.9;
+}
+
+.c-scroll {
+    position: relative;
+}
+
+.c-scroll__link {
+    color: inherit;
+}
+
+.c-scroll__paper {
+    background-color: #dac48b;
+    margin: 0 35px;
+    position: relative;
+    z-index: -1;
+}
+
+.c-scroll__holder {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.c-scroll__roll {
+    background-color: #dac48b;
+    height: 43px;
+    position: relative;
+    width: 400px;
+    max-width: 70vw;
+    margin: 0 5px;
+}
+
+.c-scroll__roll:before {
+    content: '';
+    bottom: 2px;
+    left: -7px;
+    position: absolute;
+    top: 2px;
+    width: 7px;
+    background-color: #4A2B11;
+    background-image: linear-gradient(
+        to bottom,
+        #4A2B11 5%,
+        #CD9E53 55%,
+        #CD9E53,
+        #4A2B11
+    );
+}
+
+.c-scroll__roll:after {
+    content: '';
+    bottom: 2px;
+    right: -7px;
+    position: absolute;
+    top: 2px;
+    width: 7px;
+    background-color: #4A2B11;
+    background-image: linear-gradient(
+        to bottom,
+        #4A2B11 5%,
+        #CD9E53 55%,
+        #CD9E53,
+        #4A2B11
+    );
+}
+
+.c-scroll__knob {
+    background-color: #CD9E53;
+    background-image: linear-gradient(
+        to right,
+        #4A2B11 5%,
+        #CD9E53 55%,
+        #CD9E53,
+        #4A2B11
+    );
+    box-shadow: inset 0 6px 32px #4a2b11;
+    border-radius: 15px/30px;
+    height: 70px;
+    position: relative;
+    width: 30px;
+}
+
+.c-scroll__content {
+    max-height: 0;
+    padding: 10px 20px;
+    overflow: hidden;
+    transition: 600ms;
+}
+
+.c-scroll__text {
+    text-align: center;
+    line-height: 1.3;
+    padding: 40px 0;
+}
+
+.c-scroll__knob--small {
+    position: absolute;
+    transform: scale(0.5);
+}
+
+.c-scroll__knob--left {
+    left: -20px;
+}
+
+.c-scroll__knob--right {
+    right: -20px;
+}
+
+.c-scroll__holder--bottom {
+    margin-top: -20px;
+}
+
+.c-scroll__holder--top {
+    margin-bottom: -20px;
+}
+
+.c-scroll .c-scroll__paper {
+    background-image: linear-gradient(
+        to top,
+        #cba567 0%,
+        #e3c488 3%,
+        #ebd095 10%,
+        #ebd095 89%,
+        #e5c78b 91%,
+        #d5af71 100%
+    );
+    box-shadow: inset 0 0 32px #c19b5d;
+}
+.c-scroll .c-scroll__roll--bottom {
+    background-image: linear-gradient(
+        to top,
+        #d4b078,
+        #EED89F 30%,
+        #98743C
+    );
+    transform: rotate(180deg);
+}
+.c-scroll .c-scroll__roll--top {
+    background-image: linear-gradient(
+        to bottom,
+        #98743C,
+        #EED89F 70%,
+        #b6925a
+    );
+}
