@@ -62,6 +62,6 @@ window.addEventListener('load', function() {
 
 document.addEventListener('visibilitychange', function() {
     if (!document.hidden) {
-        newScroll();
+        newSpell();
     }
 });
