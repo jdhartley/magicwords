@@ -1,7 +1,7 @@
 // https://gist.github.com/fibo/4a1df242b900d4caa217dfc305266847
 
 // Fill here with your cache name-version.
-const CACHE_NAME = '06aug2018';
+const CACHE_NAME = '06august2018';
 
 // This is the list of URLs to be cached by your Progressive Web App URLs.
 const CACHED_URLS = [
