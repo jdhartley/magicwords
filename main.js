@@ -59,3 +59,9 @@ window.addEventListener('load', function() {
     openScroll();
     document.body.addEventListener(eventName, newSpell);
 });
+
+document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+        newScroll();
+    }
+});
