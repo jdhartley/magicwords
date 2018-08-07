@@ -23,6 +23,8 @@ const magicWords = [
     'vi',
 ];
 
+const eventName = 'ontouchstart' in window ? 'touchstart' : 'click';
+
 Array.prototype.random = function() {
     return this[Math.floor(Math.random() * this.length)];
 };
@@ -45,15 +47,15 @@ function closeScroll() {
 function onCloseScroll() {
     $wrapper.removeEventListener('transitionend', onCloseScroll);
     openScroll();
-    document.body.addEventListener('click', newSpell);
+    document.body.addEventListener(eventName, newSpell);
 }
 
 function newSpell() {
-    document.body.removeEventListener('click', newSpell);
+    document.body.removeEventListener(eventName, newSpell);
     closeScroll();
 }
 
 window.addEventListener('load', function() {
     openScroll();
-    document.body.addEventListener('click', newSpell);
+    document.body.addEventListener(eventName, newSpell);
 });
