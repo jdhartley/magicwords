@@ -55,13 +55,28 @@ function newSpell() {
     closeScroll();
 }
 
-window.addEventListener('load', function() {
-    openScroll();
+function setUpPageEvents() {
     document.body.addEventListener(eventName, newSpell);
-});
 
-document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-        newSpell();
-    }
-});
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            newSpell();
+        }
+    });
+}
+
+function selectScroll() {
+    document.body.addEventListener('animationend', function roomFadedOut() {
+        document.body.removeEventListener('animationend', roomFadedOut);
+        openScroll();
+
+        setUpPageEvents();
+    });
+    document.documentElement.classList.add('has-selected');
+}
+
+function roomSetup() {
+    document.querySelector('[role="button"]').addEventListener('click', selectScroll);
+}
+
+window.addEventListener('load', roomSetup);
