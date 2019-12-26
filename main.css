@@ -190,6 +190,20 @@ h1 {
     position: relative;
     margin: 0 2em;
 }
+.skull:hover {
+    animation: 250ms ease-out shake forwards;
+}
+@keyframes shake {
+    20%, 60% {
+        transform: rotate(-6deg);
+    }
+    40%, 80% {
+        transform: rotate(6deg);
+    }
+    100% {
+       transform: rotate(0deg);
+    }
+}
 @media (max-width: 30em) {
     .skull { display: none; }
     .potion { margin-left: 2em; }
@@ -226,6 +240,21 @@ h1 {
 .eye:last-child {
     left: 50%;
     margin-left: .25em;
+}
+
+.skull:hover .eye {
+    background: radial-gradient(
+        circle,
+        red 0%,
+        red 10%,
+        black 30%,
+        black 100%
+    );
+    animation: 650ms ease-in-out pulse-eyes infinite alternate;
+}
+@keyframes pulse-eyes {
+    from { box-shadow: 0 0 0 rgba(255, 0, 0, 0, .8); }
+    to { box-shadow: 0 0 20px rgba(255, 0, 0, .8); }
 }
 
 .teeth {
