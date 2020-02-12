@@ -1,5 +1,6 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
+    // todo: restore
+    // navigator.serviceWorker.register('/sw.js');
 }
 
 let selection = null;
