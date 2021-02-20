@@ -5,7 +5,7 @@ const CACHE_NAME = '29august2018';
 
 // This is the list of URLs to be cached by your Progressive Web App URLs.
 const CACHED_URLS = [
-    'https://fonts.googleapis.com/css?family=Bilbo+Swash+Caps',
+    'https://fonts.googleapis.com/css?family=Dancing+Script|Bilbo+Swash+Caps|Gentium+Book+Basic',
     './',
     './main.css',
     './main.js',

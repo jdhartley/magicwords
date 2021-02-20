@@ -1,24 +1,411 @@
 /* Scroll styling based on https://codepen.io/jmeester/pen/rmGaGZ/ */
-@import url('https://fonts.googleapis.com/css?family=Bilbo+Swash+Caps');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Bilbo+Swash+Caps|Gentium+Book+Basic');
 
 html {
-    background-color: #000;
-    overflow: hidden;
+    background-color: #282828;
 }
 
-.c-body {
-    font-family: 'Bilbo Swash Caps', cursive;
-    font-size: 42px;
-    line-height: 1;
+html, body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[role="button"] {
+    cursor: pointer;
+}
+
+.room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 20vh 0;
+    will-change: opacity;
+    transition: 200ms opacity;
+    position: absolute;
+    z-index: 1;
+}
+
+h1 {
+    margin: 0 auto .3em;
+    color: #fff;
+    font: 5.5em/1 'Dancing Script';
+    text-align: center;
+}
+
+.shelf {
+    width: 30em;
+    padding: 0 2em;
+    max-width: 96vw;
+    margin: 0 auto;
+    border-bottom: 1em solid #d97a53;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.shelf::after,
+.shelf::before {
+    content: '';
+    display: block;
+    width: 1em;
+    height: 2em;
+    position: absolute;
+    bottom: -3em;
+    background: #732b23;
+}
+
+.shelf::before {
+    left: 1em;
+}
+
+.shelf::after {
+    right: 1em;
+}
+
+.shadow {
+    position: absolute;
+    bottom: -2.7em;
+    height: 1.7em;
+    left: 1em;
+    right: 1em;
+    z-index: -1;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, .25) 0%,
+        rgba(0, 0, 0, .01) 100%
+    );
+}
+
+.bookend {
+    width: 3em;
+    height: 4em;
+    position: relative;
+}
+
+.bookend::before {
+    height: .75em;
+    background: #a84033;
+    width: 100%;
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+}
+
+.bookend::after {
+    height: 100%;
+    width: .75em;
+    content: '';
+    display: block;
+    position: absolute;
+    background: #a84033;
+}
+
+.bookend.left::after{
+    right: 0;
+}
+
+
+.books {
+    display: flex;
+    align-items: flex-end;
+}
+
+.book {
+    overflow: hidden;
+    width: 2em;
+    height: 9em;
+    background: #907d41;
+    position: relative;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Gentium Book Basic', serif;
+    padding-top: .9em;
+    text-decoration: none;
+}
+
+.book:hover {
+    top: -.5em;
+    box-shadow: 0 0 .5em rgba(0, 0, 0, .25);
+    z-index: 4;
+}
+
+.book::before {
+    height: .5em;
+    width: 100%;
+    background: rgba(255,255,255,.15);
+    content: '';
+    display: block;
+    position: absolute;
+    top: 15%;
+}
+
+.book::after {
+    height: .5em;
+    width: 100%;
+    background: rgba(255,255,255,.15);
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 5%;
+}
+
+
+.book:first-child {
+    height: 10em;
+    width: 1.7em;
+    background: #f3888e;
+}
+
+.book:last-child {
+    height: 10em;
+    width: 1.5em;
+    background: #552835;
+    animation: 200ms ease-in 100ms tilt both;
+}
+@keyframes tilt {
+    from {
+        margin-left: 16px;
+        margin-right: 5px;
+        transform: rotate(-1deg);
+    }
+    to {
+        transform: rotate(-9deg) translate(10px, 1px);
+        margin-right: 23px;
+    }
+}
+
+.skull {
+    height: 4em;
+    width: 5em;
+    background: #fff;
+    border-radius: 100%;
+    position: relative;
+    margin: 0 2em;
+}
+.skull:hover {
+    animation: 250ms ease-out shake forwards;
+}
+@keyframes shake {
+    20%, 60% {
+        transform: rotate(-6deg);
+    }
+    40%, 80% {
+        transform: rotate(6deg);
+    }
+    100% {
+       transform: rotate(0deg);
+    }
+}
+@media (max-width: 30em) {
+    .skull { display: none; }
+    .potion { margin-left: 2em; }
+}
+
+.skull::before{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -0.3em;
+    background: white;
+    width: 5.5em;
+    height: 2em;
+    left: 50%;
+    margin-left: -2.75em;
+    border-radius: 100%;
+}
+
+.eye {
+    position: absolute;
+    background: black;
+    height: 1.75em;
+    width: 1em;
+    border-radius: 100%;
+    top: 1em;
+    z-index: 100;
+}
+
+.eye:first-child {
+    right: 50%;
+    margin-right: .25em;
+}
+
+.eye:last-child {
+    left: 50%;
+    margin-left: .25em;
+}
+
+.skull:hover .eye {
+    background: radial-gradient(
+        circle,
+        red 0%,
+        red 10%,
+        black 30%,
+        black 100%
+    );
+    animation: 650ms ease-in-out pulse-eyes infinite alternate;
+}
+@keyframes pulse-eyes {
+    from { box-shadow: 0 0 0 rgba(255, 0, 0, 0, .8); }
+    to { box-shadow: 0 0 20px rgba(255, 0, 0, .8); }
+}
+
+.teeth {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: -.75em;
+    width: 100%;
+    right: 0;
+}
+
+.tooth {
+    background: #fff;
+    height: 2em;
+    width: 1em;
+    border-bottom-left-radius: .75em;
+    border-bottom-right-radius: .75em;
+    border-bottom: 3px solid #742c24;
+}
+
+.potion {
+    background: #edf1ff;
+    height: 5em;
+    width: 5em;
+    border-radius: 100% 100% 70% 70%;
+    position: relative;
+}
+
+.potion::after {
+    content: '';
+    display: block;
+    background: #edf1ff;
+    position: absolute;
+    height: 3em;
+    width: 2em;
+    top: -2em;
+    left: 50%;
+    margin-left: -1em;
+    z-index: -1;
+}
+
+.potion::before {
+    content: '';
+    display: block;
+    background: #edf1ff;
+    position: absolute;
+    height: 1em;
+    width: 2.5em;
+    top: -2.5em;
+    left: 50%;
+    margin-left: -1.25em;
+    border-radius: 75%;
+    z-index: -1;
+}
+
+.liquid {
+    background: #909bff;
+    height: 3em;
+    width: 4.2em;
+    border-radius: 10px 10px 70% 70%;
+    position: absolute;
+    left: 50%;
+    margin-left: -2.1em;
+    bottom: .1em;
+}
+
+.bubble {
+    z-index: 9999;
+    animation: bubble 1.8s ease infinite;
+    animation-delay: 0.2s;
+    background: #909bff;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    left: 1.7em;
+    bottom: 2em;
+    position: absolute;
+    opacity: 1;
+}
+
+.bubble.two {
+    z-index: 9999;
+    animation: bubble 1.5s ease infinite;
+    animation-delay: 0.1s;
+    background: #909bff;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    left: 1.5em;
+    bottom: 2em;
+    position: absolute;
+    opacity: 1;
+}
+
+.bubble.three {
+    z-index: 9999;
+    animation: bubble 1.5s ease infinite;
+    animation-delay: -0.1s;
+    background: #909bff;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    left: 1.8em;
+    bottom: 2em;
+    position: absolute;
+    opacity: 1;
+}
+
+@keyframes bubble {
+    from { opacity: 1; }
+    to { opacity: 0; bottom: 9em; }
+}
+
+.bookcase {
+    display: flex;
+    margin-top: 120px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: .5em solid #d97a53;
+}
+
+.bookcase-cubby {
+    flex: 1 1 33%;
+    border: .5em solid #d97a53;
+    padding-top: 16%;
+    text-align: center;
+    color: #fff;
+    font-family: 'Gentium Book Basic';
+    box-shadow: inset 0 1em 1em -1em rgba(0, 0, 0, .25);
+}
+.bookcase-cubby:hover {
+    box-shadow: inset 0 1.2em 1.2em -1.2em rgba(0, 0, 0, .35);
 }
 
 .c-main {
+    display: none;
+    font-family: 'Bilbo Swash Caps', cursive;
+    font-size: 42px;
+    line-height: 1;
     align-items: center;
-    display: flex;
     justify-content: center;
     height: 100vh;
-    opacity: 0.9;
 }
+
+.c-main * {
+    box-sizing: content-box;
+}
+
 
 .c-scroll {
     position: relative;
@@ -162,4 +549,25 @@ html {
         #EED89F 70%,
         #b6925a
     );
+}
+
+.has-selected {
+    overflow: hidden;
+    transition: 2s background-color, 1.5s box-shadow;
+    background: #000;
+    box-shadow: inset 0 0 60em 10em #000;
+}
+.has-selected .room {
+    opacity: 0;
+    pointer-events: none;
+}
+.has-selected .c-main {
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    animation: 300ms 200ms both fadeInScroll;
+}
+@keyframes fadeInScroll {
+    0% { opacity: 0; }
+    100% { opactiy: .9; }
 }
